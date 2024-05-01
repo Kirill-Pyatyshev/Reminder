@@ -1,15 +1,14 @@
-package com.reminder_testtask.reminder.serivce;
+package com.reminder_testtask.serivce;
 
+import com.reminder_testtask.dto.ReminderDto;
+import com.reminder_testtask.entity.Reminder;
+import com.reminder_testtask.entity.User;
 import com.reminder_testtask.exception.NoAccessException;
 import com.reminder_testtask.exception.ReminderNotFoundException;
 import com.reminder_testtask.exception.UserNotFoundException;
-import com.reminder_testtask.reminder.dto.ReminderDto;
-import com.reminder_testtask.reminder.entity.Reminder;
-import com.reminder_testtask.reminder.repository.ReminderRepository;
-import com.reminder_testtask.reminder.utils.ReminderMapper;
-import com.reminder_testtask.user.entity.User;
-import com.reminder_testtask.user.serivce.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.reminder_testtask.repository.ReminderRepository;
+import com.reminder_testtask.utils.ReminderMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,23 +21,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ReminderService {
+@RequiredArgsConstructor
+public class ReminderServiceImpl implements ReminderService {
 
-    @Autowired
-    private ReminderRepository reminderRepository;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private ReminderMapper mapper;
+    private final ReminderRepository reminderRepository;
+    private final UserService userService;
+    private final ReminderMapper mapper;
 
     public List<Reminder> listReminders() {
         return reminderRepository.findAll();
     }
 
     public void saveReminder(Reminder reminder, String user_id) throws UserNotFoundException {
-        //???
         User user = userService.findById(user_id);
         reminder.setUser(user);
         reminderRepository.save(reminder);

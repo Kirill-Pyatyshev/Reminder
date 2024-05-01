@@ -1,4 +1,4 @@
-package com.reminder_testtask.reminder.dto;
+package com.reminder_testtask.dto;
 import lombok.*;
 
 import java.time.LocalDateTime;

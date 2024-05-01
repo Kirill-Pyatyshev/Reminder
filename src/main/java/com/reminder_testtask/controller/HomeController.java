@@ -1,4 +1,4 @@
-package com.reminder_testtask.user.controller;
+package com.reminder_testtask.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +9,6 @@ public class HomeController {
 
     @GetMapping(value = "/")
     public ResponseEntity<?> all() {
-        return ResponseEntity.ok("Все работате!");
+        return ResponseEntity.ok("ReminderApp");
     }
-
-
-
 }

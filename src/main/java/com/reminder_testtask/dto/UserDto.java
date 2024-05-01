@@ -1,4 +1,4 @@
-package com.reminder_testtask.user.dto;
+package com.reminder_testtask.dto;
 
 import lombok.*;
 

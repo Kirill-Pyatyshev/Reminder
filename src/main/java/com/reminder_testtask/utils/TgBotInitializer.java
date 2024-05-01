@@ -1,4 +1,4 @@
-package com.reminder_testtask.reminder.utils;
+package com.reminder_testtask.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;

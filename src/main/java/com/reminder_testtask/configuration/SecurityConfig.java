@@ -1,6 +1,6 @@
 package com.reminder_testtask.configuration;
 
-import com.reminder_testtask.user.serivce.OAuth2AuthenticationSuccessHandler;
+import com.reminder_testtask.serivce.OAuth2AuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;

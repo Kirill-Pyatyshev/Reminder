@@ -1,7 +1,7 @@
-package com.reminder_testtask.reminder.utils;
+package com.reminder_testtask.utils;
 
-import com.reminder_testtask.reminder.dto.ReminderDto;
-import com.reminder_testtask.reminder.entity.Reminder;
+import com.reminder_testtask.dto.ReminderDto;
+import com.reminder_testtask.entity.Reminder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;

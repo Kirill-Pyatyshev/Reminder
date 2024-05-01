@@ -1,6 +1,6 @@
-package com.reminder_testtask.reminder.entity;
+package com.reminder_testtask.entity;
 
-import com.reminder_testtask.user.entity.User;
+import com.reminder_testtask.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,10 +19,13 @@ public class Reminder{
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "title")
     private String title;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "remind")
     private LocalDateTime remind;
 

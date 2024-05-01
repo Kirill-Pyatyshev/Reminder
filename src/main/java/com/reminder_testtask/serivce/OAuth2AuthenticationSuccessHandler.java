@@ -1,7 +1,7 @@
-package com.reminder_testtask.user.serivce;
+package com.reminder_testtask.serivce;
 
-import com.reminder_testtask.user.entity.User;
-import com.reminder_testtask.user.repository.UserRepository;
+import com.reminder_testtask.entity.User;
+import com.reminder_testtask.repository.UserRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,9 +1,9 @@
-package com.reminder_testtask.reminder.utils;
+package com.reminder_testtask.utils;
 
 import com.reminder_testtask.configuration.TgBotConfig;
 import com.reminder_testtask.exception.UserNotFoundException;
-import com.reminder_testtask.user.entity.User;
-import com.reminder_testtask.user.repository.UserRepository;
+import com.reminder_testtask.entity.User;
+import com.reminder_testtask.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;

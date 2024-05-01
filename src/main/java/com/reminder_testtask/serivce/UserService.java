@@ -1,24 +1,22 @@
-package com.reminder_testtask.user.serivce;
+package com.reminder_testtask.serivce;
 
 import com.reminder_testtask.exception.UserNotFoundException;
-import com.reminder_testtask.user.dto.UserDto;
-import com.reminder_testtask.user.entity.User;
-import com.reminder_testtask.user.repository.UserRepository;
-import com.reminder_testtask.user.utils.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.reminder_testtask.dto.UserDto;
+import com.reminder_testtask.entity.User;
+import com.reminder_testtask.repository.UserRepository;
+import com.reminder_testtask.utils.UserMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private UserMapper mapper;
+    private final UserRepository userRepository;
+    private final UserMapper mapper;
 
     public List<User> listUsers() {
         return userRepository.findAll();

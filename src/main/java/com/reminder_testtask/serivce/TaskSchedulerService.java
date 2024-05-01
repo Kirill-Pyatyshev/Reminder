@@ -1,12 +1,12 @@
-package com.reminder_testtask.reminder.serivce;
+package com.reminder_testtask.serivce;
 
+import com.reminder_testtask.entity.Reminder;
+import com.reminder_testtask.entity.User;
 import com.reminder_testtask.exception.ReminderNotFoundException;
-import com.reminder_testtask.reminder.entity.Reminder;
-import com.reminder_testtask.reminder.utils.TgBotSender;
-import com.reminder_testtask.user.entity.User;
+import com.reminder_testtask.utils.TgBotSender;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -18,37 +18,33 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TaskSchedulerService {
 
-    @Autowired
-    private ReminderService reminderService;
-
-    @Autowired
-    private JavaMailSender javaMailSender;
-
-    @Autowired
-    private TgBotSender tgBotSender;
+    private final ReminderServiceImpl reminderServiceImpl;
+    private final JavaMailSender javaMailSender;
+    private final TgBotSender tgBotSender;
 
     @Value("${spring.mail.username}")
     private String sender;
 
     @Scheduled(fixedDelay = 10000)
     public void checkReminders() throws ReminderNotFoundException, AddressException, TelegramApiException {
-        List<Reminder> reminders = reminderService.listReminders();
+        List<Reminder> reminders = reminderServiceImpl.listReminders();
         LocalDateTime now = LocalDateTime.now();
 
         for (Reminder reminder : reminders) {
             if (reminder.getRemind().isBefore(now)) {
                 User user = reminder.getUser();
-                if(!user.getEmail().isEmpty()) {
+                if (!user.getEmail().isEmpty()) {
                     sendEmail(user.getEmail(), reminder.getTitle(), reminder.getDescription());
                 }
-                if(user.isActiveNotificationsTg()){
+                if (user.isActiveNotificationsTg()) {
                     tgBotSender.sendMessage(Long.parseLong(user.getTelegramId()),
-                            reminder.getTitle()+ "\n" + reminder.getDescription());
+                            reminder.getTitle() + "\n" + reminder.getDescription());
                 }
                 System.out.println("Reminder: " + reminder.getTitle());
-                reminderService.deleteReminderById(reminder.getId());
+                reminderServiceImpl.deleteReminderById(reminder.getId());
             }
         }
     }

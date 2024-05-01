@@ -1,8 +1,8 @@
-package com.reminder_testtask.user.utils;
+package com.reminder_testtask.utils;
 
-import com.reminder_testtask.reminder.entity.Reminder;
-import com.reminder_testtask.user.dto.UserDto;
-import com.reminder_testtask.user.entity.User;
+import com.reminder_testtask.entity.Reminder;
+import com.reminder_testtask.dto.UserDto;
+import com.reminder_testtask.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
